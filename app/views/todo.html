@@ -12,8 +12,5 @@
 		</form>
 </div>
 <div class="todo-list">
-	<h2>Completed <small>&mdash; {{ completedTodos.length }} / {{ getTotalTodos() }} ({{ calculatePercent(completedTodos.length) }}%)</small></h2>
-	<ul>
-		<li ng-repeat="todo in completedTodos" class="completed-todo">{{ todo }}<a ng-click="markAsIncomplete($index)"><i class="fa fa-undo"></i></a></li>
-		</ul>
+	<a href="#/todo-archive" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-list-alt"></span> To see your completed todo's click here</a>
 </div>
