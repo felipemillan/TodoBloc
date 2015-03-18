@@ -1,0 +1,19 @@
+<h1 class="text-center">TODOBIEN "The ORIGINAL To-Do Task List"</h1>
+<span>TodoBien is the easiest way to get stuff done. Whether you’re organizing your work, sharing a shopping list with a loved one or planning an overseas adventure, TodoBien is here to help you accomplish more.</span>
+<div class="todo-list">
+	<h2>Remaining <small>&mdash; {{ todos.length }} / {{ getTotalTodos() }} ({{ calculatePercent(todos.length) }}%)</small></h2>
+	<ul>
+		<li ng-repeat="todo in todos" class="todo">{{ todo }}<a ng-click="markAsComplete($index)"><i class="fa fa-check"></i></a></li>
+		</ul>
+		<form ng-submit="add(newTodo)">
+			<div class="form-group">
+				<input ng-model="newTodo" type="text" class="form-control" placeholder="Type new todo and hit enter">
+		</div>
+		</form>
+</div>
+<div class="todo-list">
+	<h2>Completed <small>&mdash; {{ completedTodos.length }} / {{ getTotalTodos() }} ({{ calculatePercent(completedTodos.length) }}%)</small></h2>
+	<ul>
+		<li ng-repeat="todo in completedTodos" class="completed-todo">{{ todo }}<a ng-click="markAsIncomplete($index)"><i class="fa fa-undo"></i></a></li>
+		</ul>
+</div>
