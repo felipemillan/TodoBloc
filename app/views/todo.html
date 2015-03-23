@@ -1,3 +1,58 @@
+<div class="container">
+    <div class="row">
+        <div class="col-xs-6"></div>
+        <div class="col-xs-2"><a href="#" class="btn btn-info btn-sm btn-block" ng-href="#/todo-list-new">New List</a></div>
+        <div class="col-xs-2"><a href="#" class="btn btn-info btn-sm btn-block" ng-href="#/todo">View To-Do's</a></div>
+        <div class="col-xs-2"><a href="#" class="btn btn-info btn-sm btn-block" ng-href="#/todo-archive">View Archive</a></div>
+    </div>
+    <br>
+    <div class="row" id="submit_todo">
+        <div class="col-xs-12">
+	        <form ng-submit="addTodo">
+				<div class="form-group">
+					<div class="input-group">
+				      <input ng-model="newTodo" type="text" class="form-control" placeholder="Type new todo and and choose a priority to create your todo">
+				      	<div class="input-group-btn">
+				        	<button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="false">Priority <span class="caret"></span></button>
+					        <ul class="dropdown-menu dropdown-menu-right" role="menu">
+					          <li><a href="#">High</a></li>
+					          <li><a href="#">Medium</a></li>
+					          <li><a href="#">Low</a></li>
+					        </ul>
+				      	</div><!-- /input-group-btn -->
+				    </div><!-- /input-group -->
+				</div><!-- /form-group -->
+			</form>
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-xs-12">
+	        <h2>Completed <small>&mdash; {{ todos.length }} / {{ getTotalTodos() }}</small></h2>
+	        <table class="table table-hover">
+				<thead>
+					<tr>
+					  <th>#</th>
+					  <th>Todo</th>
+					  <th>Priority</th>
+					  <th>Action</th>
+					</tr>
+				</thead>
+				<tbody ng-repeat="todo in todos">
+					<tr>
+					  <th scope="row">{{$index + 1}}</th>
+					  <td>{{ todo }}</td>
+					  <td>Medium{{ priority }}</td>
+					  <td class="done"><a ng-click="markAsComplete($index)">Done</a></td>
+					</tr>
+				</tbody>
+			</table>
+        </div>
+    </div>
+</div>
+
+
+<!--
 <h1 class="text-center">"The Bloc To-Do List"</h1>
 <span>ToDoBloc is the easiest way to get stuff done. Whether you’re organizing your work, sharing a shopping list with a loved one or planning an overseas adventure, TodoBien is here to help you accomplish more.</span>
 <div class="todo-list">
@@ -14,3 +69,4 @@
 <div class="todo-list">
 	<a href="#/todo-archive" class="btn btn-block btn-primary"><span class="glyphicon glyphicon-list-alt"></span> To see your completed todo's click here</a>
 </div> 
+-->

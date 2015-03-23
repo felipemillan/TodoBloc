@@ -2,33 +2,32 @@
 
 angular.module('todoblocApp')
   .controller('TodoCtrl', function ($scope, fbtodo, $timeout) {
-    // synchronized array of todos
-    $scope.todos = fbtodo.syncArray('todos');
+	  // synchronized array of todos
+	  $scope.todo = fbtodo.syncArray('todos');
 	  
 	  
 	 // provide a method for adding a todo
-	  $scope.addTodo = function() {
-	   
+	  $scope.add = function(todo) {
+	    if ( newTodo ) {
 	    	// push a todo to the end of the array
-	    	$scope.todos.$add({Description: newTodo});
-	    	$scope.newTodo = '';
-	  
+	    	$scope.todos.$add({todo: newTodo});
+	  }
 	}; 
   
   $scope.markAsComplete = function(index) {
     var todo = $scope.todos[index];
     $scope.todos.splice(index, 1);
-    $scope.completedTodos.$add(todos);
+    $scope.completedTodos.$add(todo);
   };
   
   $scope.markAsIncomplete = function(index) {
     var todo = $scope.completedTodos[index];
     $scope.completedTodos.splice(index, 1);
-    $scope.todos.$add(todos);
+    $scope.todos.$add(todo);
   };
   
   $scope.getTotalTodos = function() {
-    return $scope.todos.length;
+    return $scope.todos.length + $scope.completedTodos.length;
   };
   
   $scope.calculatePercent = function(count) {
@@ -36,11 +35,12 @@ angular.module('todoblocApp')
     return Math.round(100 / total * count);
   };
   });
-  
-  
-  
+
+
+
+
 /*
-  'use strict';
+'use strict';
 
 angular.module('todoblocApp')
   .controller('TodoCtrl', function ($scope) {

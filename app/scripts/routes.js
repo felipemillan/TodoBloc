@@ -86,6 +86,16 @@ angular.module('todoblocApp')
         templateUrl: 'views/todo_archive.html',
         controller: 'TodoCtrl'
       })
+      
+      .when('/todo2', {
+        templateUrl: 'views/todo2.html',
+        controller: 'TodoCtrl2'
+      })
+      
+      .when('/todo-archive2', {
+        templateUrl: 'views/todo_archive2.html',
+        controller: 'TodoCtrl2'
+      })
 
       .when('/chat', {
         templateUrl: 'views/chat.html',

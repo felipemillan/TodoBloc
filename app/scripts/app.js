@@ -17,5 +17,6 @@ angular.module('todoblocApp', [
     'ngTouch',
     'firebase',
     'firebase.utils',
+    'firebase.todos',
     'simpleLogin'
   ]);
