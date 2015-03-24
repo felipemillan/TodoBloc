@@ -195,6 +195,14 @@ td.done {
 	padding: 20px 0 20px 0;
 }
 
+.doneTodo {
+  color: #808080;
+  text-decoration: line-through;
+}
+.todo {
+  color: tomato;
+}
+
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
   .container {

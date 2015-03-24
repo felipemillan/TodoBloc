@@ -21,7 +21,7 @@
 				<tbody ng-repeat="todo in completedTodos" class="completed">
 					<tr>
 					  <th scope="row">{{$index + 1}}</th>
-					  <td>{{ todo }}</td>
+					  <td>{{ todo.text }}</td>
 					  <td>Medium{{ priority }}</td>
 					  <td class="undone"><a ng-click="markAsIncomplete($index)">Undone</a></td>
 					</tr>

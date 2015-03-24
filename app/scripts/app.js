@@ -18,5 +18,6 @@ angular.module('todoblocApp', [
     'firebase',
     'firebase.utils',
     'firebase.todos',
-    'simpleLogin'
+    'simpleLogin',
+    'ui.bootstrap'
   ]);
