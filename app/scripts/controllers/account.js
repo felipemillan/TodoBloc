@@ -1,7 +1,9 @@
 'use strict';
 
 angular.module('todoblocApp')
-  .controller('AccountCtrl', function ($scope, user, simpleLogin, fbutil, $timeout) {
+  .controller('AccountCtrl', function ($scope, user, simpleLogin, fbutil, fbtodo, $timeout) {
+    $scope.todos = fbtodo.syncArray('todos');
+    
     $scope.user = user;
     $scope.logout = simpleLogin.logout;
     $scope.messages = [];

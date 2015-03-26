@@ -85,10 +85,14 @@ ul {
   margin-bottom: 45px;
 }
 
-.todo,
-.completed-todo {
-  position: relative;
+.complete {
+  color: #808080;
+  text-decoration: line-through;
 }
+.uncomplete {
+  color: tomato;
+} 
+
 .todo a,
 .completed-todo a {
   bottom: 0;
@@ -114,15 +118,7 @@ ul {
   right: 10px;
   top: 50%;
   width: 20px;
-}
-
-.todo {
-  background-color: #FFF;
-  border-radius: 5px;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  margin: 0 0 5px;
-  padding: 10px 55px 10px 15px;
-}
+} 
 
 .completed-todo {
   color: #999;
@@ -136,12 +132,12 @@ ul {
   color: #D6563A;
 }
 
-
+.strike {
+    text-decoration: line-through;
+}
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+
 
   /* Remove the padding we set earlier */
   .header,

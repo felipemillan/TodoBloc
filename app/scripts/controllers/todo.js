@@ -1,53 +1,75 @@
 'use strict';
 
 angular.module('todoblocApp')
-  .controller('TodoCtrl', function ($scope) {
-    $scope.todos = [
-    'Fix broken links',
-    'Spelling and grammar',
-    'Check website in all browsers',
-    'World ready',
-    'Automated testing'
-  ];
-  
-  $scope.completedTodos = [
-    'Google Page Speed score of 90+',
-    'Yahoo YSlow score of 85+',
-    'Optimize HTTP headers',
-    'Optimize images',
-    'HTML validation',
-    'CSS validation',
-    'Run CSS Lint',
-    'Run JSLint/JSHint'
-  ];
-   
-  $scope.add = function(todo) {
-    if ( todo === '' || typeof todo === 'undefined' ) {
-      return false;
-    }
+  .controller('TodoCtrl', function ($scope, fbtodo, $timeout, FBURL) {
+    // synchronized array of todos
+    $scope.todos = fbtodo.syncArray('todos');
+	var Done = $scope.todos.Done;
+	
+	// provide a method for adding a todo
+	$scope.addTodo = function(newTodo, todoPriority, status) {
+		  			  	
+    	// push a todo to the end of the array
+    	$scope.todos.$add({
+	    	Description: $scope.todoDescription, 
+	    	Priority: $scope.todoPriority,
+	    	Done: false,
+	    	Expired: false,
+	    	Date: Date.now() / 1000 | 0 
+	    });
+    	$scope.todoDescription = '';
+    	$scope.todoPriority = '';
+    	
+    	$scope.descriptionBox = 'Add a new todo';
+		$scope.new = document.getElementById('new-todo');
+	  
+	};
+	
+	$scope.removeTodo = function(key) {
+	    for(var i=0;i<$scope.todos.length;i++){
+	        if(key==$scope.todos[i].$id){
+	            $scope.todos.$remove(i);
+	        }
+	    }
+    };
+	
+	
+	$scope.changeState = function(key, done) {
+	    for(var i=0;i<$scope.todos.length;i++){
+	        if(key==$scope.todos[i].$id){
+	            if (done === false ) {
+						$scope.todos[i].Done = true;
+			    } else {
+			      $scope.todos[i].Done = false;
+			    }
+			    $scope.todos.$save(i);
+	        }
+	    }
+    };
     
-    $scope.todos.push(todo);
-    $scope.newTodo = '';
-  };
-  
-  $scope.markAsComplete = function(index) {
-    var todo = $scope.todos[index];
-    $scope.todos.splice(index, 1);
-    $scope.completedTodos.push(todo);
-  };
-  
-  $scope.markAsIncomplete = function(index) {
-    var todo = $scope.completedTodos[index];
-    $scope.completedTodos.splice(index, 1);
-    $scope.todos.push(todo);
-  };
-  
-  $scope.getTotalTodos = function() {
-    return $scope.todos.length + $scope.completedTodos.length;
-  };
-  
-  $scope.calculatePercent = function(count) {
-    var total = $scope.getTotalTodos();
-    return Math.round(100 / total * count);
-  };
-  });
+    $scope.changeState2 = function(key, done) {
+	    for(var i=0;i<$scope.todos.length;i++){
+	        if(key==$scope.todos[i].$id){
+	            if (done === false ) {
+						$scope.todos[i].Expired = true;
+			    } else {
+			      $scope.todos[i].Expired = false;
+			    }
+			    $scope.todos.$save(i);
+	        }
+	    }
+    };
+	
+
+	$scope.todoExpired = function(todo) { 
+		  var today = new Date();
+		  var fDate = new Date(todo.date);
+		  fDate.setDate(fDate.getDate() + 7);
+		    if (today > fDate) {
+		      return true;
+		        } else {
+		      return false;
+	    }
+	};
+
+});
