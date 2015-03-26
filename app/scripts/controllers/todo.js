@@ -44,7 +44,7 @@ angular.module('todoblocApp')
 			    }
 			    $scope.todos.$save(i);
 	        }
-	    }
+	    } 
     };
     
     $scope.changeState2 = function(key, done) {
