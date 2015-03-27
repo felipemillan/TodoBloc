@@ -4,65 +4,61 @@
 			<div class="list-group-item heading">
 				<div class="text-wrap">
 					<h4 class="list-group-item-heading">
-						<h2>Expired To-Do's <small>&mdash; {{ todos.length }} / {{ getTotalTodos() }} ({{ calculatePercent(todos.length) }}%)</small></h2>
+						<h2>Expired To-Do's</h2>
 					</h4>
 				</div>
 				<div class="clearfix"></div>
 			</div>
-<!--
-			<li ng-repeat="todo in todos | filter: {Done: true} " href="#" class="list-group-item">
-				<i ng-click="removeTodo($index)" ng-model="radioModel" class="fa fa-times fa-lg pull-right"></i>
-				<input class="pull-right" type="checkbox" ng-click="changeState(todo.$id, todo.Done)" ng-checked="todo.Done == true ">
-				<p ng-class="{strike: todo.Done}" class="list-group-item-text">{{ todo.Description }} {{ todo.Done }}</p>
-			</li>
--->
 		</div>
 	</div>
 	<div class="col-lg-4 col-sm-6 col-xs-12 ">
-	<div id="user-widget" class="list-group">
-		<div class="list-group-item heading">
-			<div class="text-wrap">
-			<h4 class="list-group-item-heading">High Priority</h4>
-			</div>
-			<div class="clearfix"></div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+	        	<h3 class="panel-title" id="panel-title">Low High</h3>
+	      	</div>
+	      	<div class="panel-body">
+	       		<ul class="list-group">
+				  <li ng-repeat="todo in todos | filter:todo.Priority = 'High' | filter: {Done: false}	| filter: {Expired: true}" href="#" class="list-group-item">
+				    <span class="pull-right label label-danger label-as-badge" ng-click="removeTodo(todo.$id)" ng-model="radioModel">DELETE</span>
+				    <span class="pull-right label label-success label-as-badge" ng-click="changeState(todo.$id, todo.Done)" ng-checked="todo.Done == true ">UNEXPIRED</span> 
+					<p ng-class="{strike: todo.Done}" class="list-group-item-text">{{ todo.Description }}</p>
+				  </li>
+				</ul>
+	      	</div>
 		</div>
-		<li ng-repeat="todo in todos | filter:todo.Priority = 'High'| filter: {Expired: true}	" href="#" class="list-group-item">
-			<i ng-click="removeTodo(todo.$id)" ng-model="radioModel" class="fa fa-times fa-lg pull-right"></i>
-			<input class="pull-right" type="checkbox" ng-click="changeState2(todo.$id, todo.Done)" ng-checked="todo.Done == true ">
-			<p ng-class="{strike: todo.Done}" class="list-group-item-text">{{ todo.Description }}</p>
-		</li>
 	</div>
-</div>
-<div class="col-lg-4 col-sm-6 col-xs-12 ">
-	<div id="user-widget" class="list-group">
-		<div class="list-group-item heading">
-			<div class="text-wrap">
-			<h4 class="list-group-item-heading">Medium Priority</h4>
-			</div>
-			<div class="clearfix"></div>
+	<div class="col-lg-4 col-sm-6 col-xs-12 ">
+		<div class="panel panel-info">
+			<div class="panel-heading">
+	        	<h3 class="panel-title" id="panel-title">Medium Priority</h3>
+	      	</div>
+	      	<div class="panel-body">
+	       		<ul class="list-group">
+				  <li ng-repeat="todo in todos | filter:todo.Priority = 'Medium' | filter: {Done: false}	| filter: {Expired: true}" href="#" class="list-group-item">
+				    <span class="pull-right label label-danger label-as-badge" ng-click="removeTodo(todo.$id)" ng-model="radioModel">DELETE</span>
+				    <span class="pull-right label label-success label-as-badge" ng-click="changeState(todo.$id, todo.Done)" ng-checked="todo.Done == true ">UNEXPIRED</span> 
+					<p ng-class="{strike: todo.Done}" class="list-group-item-text">{{ todo.Description }}</p>
+				  </li>
+				</ul>
+	      	</div>
 		</div>
-		<li ng-repeat="todo in todos | filter:todo.Priority = 'Medium' | filter: {Expired: true}" href="#" class="list-group-item">
-			<i ng-click="removeTodo(todo.$id)" ng-model="radioModel" class="fa fa-times fa-lg pull-right"></i>
-			<input class="pull-right" type="checkbox" ng-click="changeState2(todo.$id, todo.Done)" ng-checked="todo.Done == true ">
-			<p ng-class="{strike: todo.Done}" class="list-group-item-text">{{ todo.Description }}</p>
-		</li>
 	</div>
-</div>
-<div class="col-lg-4 col-sm-6 col-xs-12 ">
-	<div id="user-widget" class="list-group">
-		<div class="list-group-item heading">
-			<div class="text-wrap">
-			<h4 class="list-group-item-heading">Low Priority</h4>
-			</div>
-			<div class="clearfix"></div>
+	<div class="col-lg-4 col-sm-6 col-xs-12 ">
+		<div class="panel panel-warning">
+			<div class="panel-heading">
+	        	<h3 class="panel-title" id="panel-title">Low Priority</h3>
+	      	</div>
+	      	<div class="panel-body">
+	       		<ul class="list-group">
+				  <li ng-repeat="todo in todos | filter:todo.Priority = 'Low' | filter: {Done: false}	| filter: {Expired: true}" href="#" class="list-group-item">
+				    <span class="pull-right label label-danger label-as-badge" ng-click="removeTodo(todo.$id)" ng-model="radioModel">DELETE</span>
+				    <span class="pull-right label label-success label-as-badge" ng-click="changeState(todo.$id, todo.Done)" ng-checked="todo.Done == true ">UNEXPIRED</span> 
+					<p ng-class="{strike: todo.Done}" class="list-group-item-text">{{ todo.Description }}</p>
+				  </li>
+				</ul>
+	      	</div>
 		</div>
-		<li ng-repeat="todo in todos | filter:todo.Priority = 'Low' | filter: {Expired: true}	" href="#" class="list-group-item">
-			<i ng-click="removeTodo(todo.$id)" ng-model="radioModel" class="fa fa-times fa-lg pull-right"></i>
-			<input class="pull-right" type="checkbox" ng-click="changeState2(todo.$id, todo.Expired)" ng-checked="todo.Expired == true ">
-			<p ng-class="{strike: todo.Done}" class="list-group-item-text">{{ todo.Description }}</p>
-		</li>
 	</div>
-</div>
 </div>
 
 
