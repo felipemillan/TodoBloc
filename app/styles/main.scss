@@ -2,7 +2,10 @@ $icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/boots
 // bower:scss
 @import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
 // endbower
-
+.row {
+	margin-left: 0px;
+	margin-right: 0px;
+}
 .browsehappy {
   margin: 0.2em 0;
   background: #ccc;
@@ -39,8 +42,9 @@ body {
 
 /* Custom page footer */
 .footer {
-  padding-top: 45px;
+  padding-top: 19px;
   color: #777;
+  border-top: 1px solid #e5e5e5;
 }
 
 .container-narrow > hr {
@@ -80,23 +84,20 @@ ul {
   border-color: #E1E1E1;
 }
 
-#todo_description {
-	  width: 70%;
-  }
-
-#todo_priority {
-	  width: 30%;
-  }
-
 .todo-list {
   margin-bottom: 45px;
 }
 
-.todo, .completed-todo {
-  position: relative;
+.complete {
+  color: #808080;
+  text-decoration: line-through;
 }
+.uncomplete {
+  color: tomato;
+} 
 
-.todo a, .completed-todo a {
+.todo a,
+.completed-todo a {
   bottom: 0;
   color: #EEE;
   display: block;
@@ -106,13 +107,13 @@ ul {
   top: 0;
   width: 40px;
 }
-
-.todo a:hover, .completed-todo a:hover {
+.todo a:hover,
+.completed-todo a:hover {
   color: #75B51B;
   cursor: pointer;
 }
-
-.todo a i, .completed-todo a i {
+.todo a i,
+.completed-todo a i {
   height: 20px;
   line-height: 20px;
   margin-top: -10px;
@@ -120,94 +121,26 @@ ul {
   right: 10px;
   top: 50%;
   width: 20px;
-}
-
-.todo {
-  background-color: #FFF;
-  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.1);
-  margin: 0 0 5px;
-  padding: 10px 55px 10px 15px;
-}
-
-td.done {
-	cursor: pointer;
-}
+} 
 
 .completed-todo {
   color: #999;
   font-size: 13px;
   text-decoration: line-through;
-  a {
-    color: #DDD;
-    &:hover {
-      color: #D6563A;
-    }
-  }
 }
-.completed td {
-	text-decoration: line-through;
-	color: #898989;
+.completed-todo a {
+  color: #DDD;
+}
+.completed-todo a:hover {
+  color: #D6563A;
 }
 
-.completed td.undone { 
-		text-decoration: none;
-		a {
-			cursor: pointer;
-		}
-	}
-
-.archive_btn {
-  margin-top: 10px;
+.strike {
+    text-decoration: line-through;
 }
-
-.box_todo_style {
-	list-style-type: none;
-	height: 40px;
-	span {
-		text-align: center;
-		color: red;
-		padding: 5px;
-	}
-}
-
-.done_button a {
-  background-color: #51abc9;
-  width: 100%;
-  padding-top: 11px;
-  color: white;
-  &:hover {
-    color: black;
-  }
-}
-
-.jumbotrons {
-	text-align: center;
-	padding: 50px;
-	margin-bottom: 30px;
-	background-color: #eeeeee;
-	h2 {
-		padding-top: 15px;
-	}
-	
-}
-
-#submit_todo {
-	padding: 20px 0 20px 0;
-}
-
-.doneTodo {
-  color: #808080;
-  text-decoration: line-through;
-}
-.todo {
-  color: tomato;
-}
-
 /* Responsive: Portrait tablets and up */
 @media screen and (min-width: 768px) {
-  .container {
-    max-width: 730px;
-  }
+
 
   /* Remove the padding we set earlier */
   .header,
